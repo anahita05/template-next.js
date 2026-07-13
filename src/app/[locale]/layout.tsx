@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
@@ -33,6 +33,8 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   const dir = locale === "fa" ? "rtl" : "ltr";
 
   return (
@@ -45,7 +47,7 @@ export default async function LocaleLayout({
         <ThemeInitializer />
       </head>
       <body className="min-h-screen antialiased">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
