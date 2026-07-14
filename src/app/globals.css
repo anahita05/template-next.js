@@ -5,7 +5,7 @@
 
 :root,
 [data-theme="navy"] {
-  --background: 220 45% 98%;
+  --background: 225 20% 85%;
   --foreground: 222 47% 11%;
 
   --card: 0 0% 100%;
@@ -41,7 +41,7 @@
 }
 
 [data-theme="pink"] {
-  --background: 330 45% 98%;
+  --background: 305 84% 94%;
   --foreground: 336 40% 15%;
 
   --card: 0 0% 100%;
@@ -84,4 +84,29 @@ body {
 
 [dir="rtl"] body {
   font-family: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+[data-theme-transition]::view-transition-new(root) {
+  animation: theme-reveal 0.6s ease-in-out;
+  clip-path: circle(0% at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+}
+
+@keyframes theme-reveal {
+  to {
+    clip-path: circle(150% at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
 }
