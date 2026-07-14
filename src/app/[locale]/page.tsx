@@ -41,7 +41,13 @@ function HomeContent() {
           {t("subtitle")}
         </p>
         <Button asChild size="lg" className="mt-8">
-          <Link href="/about">{t("cta")}</Link>
+          <a
+            href="https://github.com/anahita05/template-next.js"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("cta")}
+          </a>
         </Button>
       </section>
 
