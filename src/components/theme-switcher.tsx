@@ -44,7 +44,7 @@ export function ThemeSwitcher() {
 
     root.style.setProperty("--theme-transition-x", `${x}%`);
     root.style.setProperty("--theme-transition-y", `${y}%`);
-    root.dataset.themeTransition = nextTheme;
+    root.dataset.themeTransition = nextTheme === "navy" ? "to-navy" : "to-pink";
 
     const transition = document.startViewTransition(() => {
       setTheme(nextTheme);
@@ -70,7 +70,6 @@ export function ThemeSwitcher() {
       onClick={toggleThemeWithAnimation}
       aria-label={t("switchLabel")}
       title={theme === "navy" ? t("pink") : t("navy")}
-      key={theme}
       className="animate-theme-pulse"
     >
       <Palette className="h-5 w-5" />
